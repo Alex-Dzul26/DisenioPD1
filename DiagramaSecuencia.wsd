@@ -1,0 +1,15 @@
+@startuml
+participant pdf_document
+participant images
+participant QR_codes
+participant faces
+
+note left of pdf_document: Abrir documento PDF
+pdf_document -> pdf_document: extraer páginas del PDF
+loop para cada página en pdf_document
+    pdf_document -> images: extraer imagen
+    images -> faces: detectar rostros
+    images -> QR_codes: decodificar códigos QR
+end
+note right of pdf_document: Cerrar documento PDF
+@enduml
